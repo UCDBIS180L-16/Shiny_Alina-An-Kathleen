@@ -4,24 +4,28 @@
 
 library(shiny)
 
-shinyUI(fluidPage(
-
+# Define UI for application that draws a histogram
+shinyUI(fluidPage( #create the overall page
+  
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
-
-  # Sidebar with a slider input for number of bins
+  titlePanel("Rice Data"),
+  
+  # Some helpful information
+  helpText("This application creates a scatterplot to show difference between",
+           "rice species.  Please use the radio box below to choose two traits",
+           "for plotting"),
+  
+  # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
-
+      radioButtons("grouping", #the input variable that the value will go into
+                   "Choose a way to group the data:",
+                   c("Region",
+                     "popID")
+      )),
+    
     # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
+    mainPanel(plotOutput("boxPlot")
     )
   )
 ))
