@@ -22,10 +22,12 @@ shinyUI(fluidPage( #create the overall page
                    "Choose a way to group the data:",
                    c("Region",
                      "popID")
-      )),
+    
+                   
+    )),
     
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot")
+    mainPanel(plotOutput("boxPlot"))
     )
-  )
-))
+    )
+    )

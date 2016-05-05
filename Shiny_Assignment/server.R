@@ -23,16 +23,17 @@ shinyServer(function(input, output) {
   
   output$boxPlot <- renderPlot({
     ricedata <- read.csv("data.pheno.mds.csv")
+    ricedata$popID <- as.character(ricedata$popID)
     # set up the plot
     pl <- ggplot(data = ricedata,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
-                 aes_string(x = "V1", y = "V2", color = input$grouping
+                 aes_string(x = input$grouping, y = "Amylose.content", fill = input$grouping
                  )
     )
     
-    # draw the boxplot for the specified trait
-    pl + geom_point()
+    # draw the violin plot for the specified grouping and trait
+    pl + geom_violin()
   })
 })
 
