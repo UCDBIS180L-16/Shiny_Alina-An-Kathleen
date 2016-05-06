@@ -11,7 +11,7 @@ shinyUI(fluidPage( #create the overall page
   titlePanel("Rice Data"),
   
   # Some helpful information
-  helpText("This application creates a scatterplot to show difference between",
+  helpText("This application creates a violinplot to show difference between",
            "rice species.  Please use the radio box below to choose two traits",
            "for plotting"),
   
@@ -22,9 +22,13 @@ shinyUI(fluidPage( #create the overall page
                    "Choose a way to group the data:",
                    c("Region",
                      "popID")
-    
-                   
-    )),
+      ),
+      radioButtons("trait", #the input variable that the value will go into
+                   "Choose a trait to investigate:",
+                   c("Protein.content",
+                     "Seed.number.per.panicle")
+      )
+    ),  
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput("violinPlot"))
