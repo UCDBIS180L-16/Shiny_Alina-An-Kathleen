@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
   #     when inputs change
   #  2) Its output type is a plot
   
-  output$boxPlot <- renderPlot({
+  output$violinPlot <- renderPlot({
     ricedata <- read.csv("data.pheno.mds.csv")
     ricedata$popID <- as.character(ricedata$popID)
     # set up the plot
