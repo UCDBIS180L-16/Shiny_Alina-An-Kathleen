@@ -26,12 +26,12 @@ shinyUI(fluidPage( #create the overall page
       radioButtons("trait", #the input variable that the value will go into
                    "Choose a trait to investigate:",
                    c("Protein.content",
-                     "Seed.number.per.panicle")
+                     "Amylose.content")
       )
     ),  
     
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot"))
+    mainPanel(plotOutput("violinPlot"))
     )
     )
     )
