@@ -11,7 +11,7 @@ shinyUI(fluidPage( #create the overall page
   titlePanel("Rice Data"),
   
   # Some helpful information
-  helpText("This application creates a violinplot to show difference between",
+  helpText("This application creates a violin plot to show difference between",
            "rice species.  Please use the radio box below to choose two traits",
            "for plotting"),
   
@@ -26,7 +26,7 @@ shinyUI(fluidPage( #create the overall page
       radioButtons("trait", #the input variable that the value will go into
                    "Choose a trait to investigate:",
                    c("Protein.content",
-                     "Seed.number.per.panicle")
+                     "Amylose.content")
       )
     ),  
     
