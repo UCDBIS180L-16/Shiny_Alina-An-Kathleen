@@ -6,18 +6,24 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage( #create the overall page
+
   
-  # Application title
   titlePanel("Rice Data"),
   
-  # Some helpful information
+  
   helpText("This application creates a violin plot to show difference between",
            "rice species.  Please use the radio box below to choose two traits",
            "for plotting"),
   
+  
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
+      
+      selectInput("population", label = h3("Choose a population to display"), 
+                  choices = list("Population 1" = 1, "Population 2" = 2, "Population 3" = 3, "Population 4" = 4), 
+                  selected = "Population 1"),
+      
       radioButtons("grouping", #the input variable that the value will go into
                    "Choose a way to group the data:",
                    c("Region",
@@ -31,7 +37,7 @@ shinyUI(fluidPage( #create the overall page
     ),  
     
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("violinPlot"))
+    mainPanel(plotOutput("violinPlot"), plotOutput("scatterplot"))
     )
     )
     )
