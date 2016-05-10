@@ -11,18 +11,18 @@ shinyUI(fluidPage( #create the overall page
   titlePanel("Rice Data"),
   
   
-  helpText("This application creates a violin plot to show difference between",
-           "rice species.  Please use the radio box below to choose two traits",
-           "for plotting"),
+  helpText("This application creates a scatter plot to show plant height vs protein content for different populations of",
+           "rice species.  Please use the pull down bar to select a population. This application also creates a violin plot",
+           "to group data by Region or Population. Please use the radio boxes below to choose which trait to plot."),
   
   
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
       
-      selectInput("population", label = h3("Choose a population to display"), 
+      selectInput("population", label = h3("Choose a population to display for plant height vs protein content"), 
                   choices = list("Population 1" = 1, "Population 2" = 2, "Population 3" = 3, "Population 4" = 4), 
-                  selected = "Population 1"),
+                  selected = "Population 1"), # default is Population 1
       
       radioButtons("grouping", #the input variable that the value will go into
                    "Choose a way to group the data:",
