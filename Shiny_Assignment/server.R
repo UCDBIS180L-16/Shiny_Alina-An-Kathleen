@@ -10,31 +10,28 @@
 
 library(shiny)
 library(ggplot2)
+library(reshape2)
 
-# Define server logic required to draw a boxplot
 shinyServer(function(input, output) {
   
-  # Expression that generates a boxplot. The expression is
-  # wrapped in a call to renderPlot to indicate that:
-  #
-  #  1) It is "reactive" and therefore should re-execute automatically
-  #     when inputs change
-  #  2) Its output type is a plot
+  output$scatterplot <- renderPlot({ 
+    
+    rice <- read.csv("data.pheno.mds.csv")
+    
+    riceID <- subset(rice, popID == input$population)
+    
+    p2 <- ggplot(riceID,aes(x = Protein.content,y = Plant.height, colour=Region))
+    p2 + geom_point() + scale_colour_hue(l=80, c=150)
+    
+    })
   
   output$violinPlot <- renderPlot({
-    ricedata <- read.csv("data.pheno.mds.csv")
-    ricedata$popID <- as.character(ricedata$popID)
-    # set up the plot
-    pl <- ggplot(data = ricedata,
-                 #Use aes_string below so that input$trait is interpreted
-                 #correctly.  The other variables need to be quoted
-                 aes_string(x = input$grouping, y = input$trait, fill = input$grouping
-                 )
-    )
+    rice <- read.csv("data.pheno.mds.csv")
+    rice$popID <- as.character(rice$popID)
     
-    # draw the violin plot for the specified grouping and trait
-    pl + geom_violin()
-  })
-})
+    pl <- ggplot(data = rice,aes_string(x = input$grouping, y = input$trait, fill = input$grouping))
+    pl + geom_violin() })
+
+                                      })
 
 
