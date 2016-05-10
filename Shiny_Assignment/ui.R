@@ -38,6 +38,10 @@ shinyUI(fluidPage( #create the overall page
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput("violinPlot"), plotOutput("scatterplot"))
-    )
-    )
-    )
+  )
+))
+
+###################################################
+# url for shiny app:                              #
+# https://austinan.shinyapps.io/Shiny_Assignment/ #
+###################################################
