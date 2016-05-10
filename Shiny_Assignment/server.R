@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
     
     riceID <- subset(rice, popID == input$population)
     
-    p2 <- ggplot(riceID,aes(x = Protein.content,y = Plant.height, colour=Region))
+    p2 <- ggplot(riceID,aes(x = Protein.content,y = Amylose.content, colour=Region))
     p2 + geom_point() + scale_colour_hue(l=80, c=150)
     
     })
